@@ -566,7 +566,7 @@ Asignamos el mismo mediante el cual se establezca la conexion ssh
 </tr>
 </tbody>
 </table>
-<p><strong>Por qué usar tu propio Dockerfile en vez de la imagen <code>squidfunk/mkdocs-material</code>:</strong>
+<p><strong>Por qué usar tu propio Dockerfile en lugar de la imagen <code>squidfunk/mkdocs-material</code>:</strong>
 - Control total sobre cuándo actualizar (no dependes de que un tercero publique una nueva imagen)
 - Base Debian (<code>slim</code>) en vez de Alpine → tienes <code>bash</code> disponible, más fácil de depurar
 - Mismo software final (MIT license), solo cambia quién construye la imagen</p>
@@ -624,11 +624,11 @@ Asignamos el mismo mediante el cual se establezca la conexion ssh
 <p>No hace falta <code>docker compose down</code> antes de <code>up</code> en ninguno de los dos casos — Compose detecta el cambio y recrea el contenedor automáticamente. Si el contenedor se eliminó manualmente, <code>up -d</code> simplemente lo vuelve a crear desde la imagen ya construida.</p>
 <hr />
 <h2 id="generar-el-html-final-el-build">Generar el HTML final (el <code>build</code>)<a class="headerlink" href="#generar-el-html-final-el-build" title="Permanent link">&para;</a></h2>
-<p><code>mkdocs serve</code> renderiza cada cambio en tus archivos .md y lo muestra via HTML, solo en tu red local (ip privada).</p>
+<p><code>mkdocs serve</code> renderiza cada cambio en tus archivos .md y lo muestra via HTML, solo en tu red local (ip_privada:8087).</p>
 <p>Para generar el sitio estático definitivo (el que servir desde apache):</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>mkdocs<span class="w"> </span>mkdocs<span class="w"> </span>build
 </code></pre></div>
-<p>Esto crea la carpeta <code>site/</code> (HTML + CSS + JS ya compilados) dentro de <code>/srv/docker/mkdocs/</code>. Es un <strong>build limpio</strong> por defecto: borra y regenera <code>site/</code> entero cada vez, así que nunca quedan páginas obsoletas.</p>
+<p>Esto crea la carpeta <code>site/</code> (HTML + CSS + JS ya compilados) dentro de <code>/srv/docker/mkdocs/</code>. En cada ejecucion del comando, borra y regenera <code>site/</code> entero cada vez, así que nunca quedan páginas obsoletas.</p>
 <hr />
 <h2 id="explicar-en-apartado-docker-comandos-docker-usados-con-frecuencia">(explicar en apartado docker) Comandos Docker usados con frecuencia<a class="headerlink" href="#explicar-en-apartado-docker-comandos-docker-usados-con-frecuencia" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># Ver contenedores activos</span>
