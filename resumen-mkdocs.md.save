@@ -1,0 +1,250 @@
+# MkDocs (Contenedor)
+
+MKDocs es un servicio mediante el cual podemos gestionar archivos .md (markdown) y generar el sitio estatico para servirlo via web
+
+## Estructura de carpetas
+
+```
+/srv/docker/mkdocs/o
+├── Dockerfile
+├── mkdocs.yml
+└── docs/
+    └── index.md
+```
+
+> Nota: el volumen mapea `/srv/docker/mkdocs` → `/docs` (dentro del contenedor), y como MkDocs busca por convención una subcarpeta llamada `docs/` para el contenido, aparece un "doble docs" (uno es el punto de montaje, otro es la carpeta que exige MkDocs). No es un error, es el patrón estándar.
+
+---
+
+Propietario de la carpeta corregido para poder editar desde VS Code sin errores de permisos:
+```bash
+sudo chown -R usuario:usuario /srv/docker/mkdocs
+```
+
+---
+
+## Dockerfile
+
+Definimos un Dockerfile para confeccionar nuestra imagen de docker hub.
+
+```dockerfile
+FROM python:3.14-slim
+
+RUN pip install --no-cache-dir mkdocs mkdocs-material
+
+WORKDIR /docs
+
+EXPOSE 8000
+
+CMD ["mkdocs", "serve", "-a", "0.0.0.0:8000"]
+```
+
+| Línea | Qué hace |
+|---|---|
+| `FROM python:3.14-slim` | Imagen base de partida: Python 3.14 sobre Debian ligero |
+| `RUN pip install ...` | Se ejecuta **una vez**, al construir la imagen. Instala MkDocs + Material (y de paso, `pymdown-extensions`, que viene como dependencia de Material) |
+| `WORKDIR /docs` | Carpeta de trabajo por defecto dentro del contenedor |
+| `EXPOSE 8000` | Documenta qué puerto usa (no lo abre por sí mismo) |
+| `CMD [...]` | Comando que se ejecuta **cada vez que arranca el contenedor** (a diferencia de `RUN`, que solo corre al construir) |
+
+** (poner en apartado docker) Por qué usar tu propio Dockerfile en vez de la imagen `squidfunk/mkdocs-material`:**
+- Control total sobre cuándo actualizar (no dependes de que un tercero publique una nueva imagen)
+- Base Debian (`slim`) en vez de Alpine → tienes `bash` disponible, más fácil de depurar
+- Mismo software final (MIT license), solo cambia quién construye la imagen
+
+---
+
+## (poner en apartado docker) Imagen vs `command:` — no son lo mismo
+
+- **La imagen** (`mkdocs-img`) se construye a partir del Dockerfile: sistema operativo base, Python, y los paquetes instalados con `pip install`. Es un paso independiente (`docker build` / `--build`).
+- **El `command:`** del docker-compose solo indica **qué ejecutar al arrancar el contenedor**, sobrescribiendo (si está presente) el `CMD` del Dockerfile. Es una decisión que se toma al **crear el contenedor**, no al construir la imagen.
+
+Por eso, quitar o cambiar el `command:` del compose **nunca** requiere `--build` — la imagen no se ve afectada en absoluto por ese cambio.
+
+---
+
+## El docker-compose.yml
+
+```yaml
+services:
+  mkdocs-dev:
+    build:
+      context: ./mkdocs
+    image: mkdocs-img
+    container_name: mkdocs
+    ports:
+      - "8087:8000"
+    volumes:
+      - /srv/docker/mkdocs:/docs
+    restart: unless-stopped
+```
+
+- `build: context:` → le dice a Compose dónde está el Dockerfile a construir
+- `ports: "8087:8000"` → puerto externo (el que usas en el navegador) : puerto interno (el que escucha MkDocs dentro del contenedor)
+- `volumes:` → mapea toda la carpeta del proyecto a `/docs`; como `mkdocs.yml` está en su raíz, MkDocs lo encuentra sin necesitar `-f`
+- Sin `command:` → el contenedor usa el `CMD` del Dockerfile tal cual (`mkdocs serve -a 0.0.0.0:8000`)
+- `restart: unless-stopped` → el contenedor se relanza solo si se cae o si reinicias la Raspberry
+
+###  (explicar en apartado docker) `docker compose up -d` — ¿con `--build` o sin él?
+
+| Qué cambiaste | Comando |
+|---|---|
+| El **Dockerfile** (paquetes pip, imagen base, etc.) | `docker compose up -d --build mkdocs-dev` |
+| El **docker-compose.yml** (puertos, volúmenes, `command:`, nombres) | `docker compose up -d mkdocs-dev` (sin `--build`) |
+| Solo `.md` o `mkdocs.yml` | Nada — se reflejan solos vía volumen |
+
+No hace falta `docker compose down` antes de `up` en ninguno de los dos casos — Compose detecta el cambio y recrea el contenedor automáticamente. Si el contenedor se eliminó manualmente, `up -d` simplemente lo vuelve a crear desde la imagen ya construida.
+
+---
+
+## Generar el HTML final (el `build`)
+
+`mkdocs serve` renderiza cada cambio en tus archivos .md y lo muestra via HTML, solo en tu red local (ip privada).
+
+Para generar el sitio estático definitivo (el que servir desde apache):
+
+```bash
+docker exec mkdocs mkdocs build
+```
+
+Esto crea la carpeta `site/` (HTML + CSS + JS ya compilados) dentro de `/srv/docker/mkdocs/`. Es un **build limpio** por defecto: borra y regenera `site/` entero cada vez, así que nunca quedan páginas obsoletas.
+
+---
+
+## (explicar en apartado docker) Comandos Docker usados con frecuencia
+
+```bash
+# Ver contenedores activos
+docker ps
+
+# Ver logs de un contenedor
+docker logs mkdocs
+
+# Ejecutar un comando puntual dentro del contenedor
+docker exec mkdocs mkdocs build
+
+# Entrar a una shell interactiva dentro del contenedor
+docker exec -it mkdocs sh
+
+# Levantar solo un servicio concreto (sin tocar los demás del compose)
+docker compose up -d mkdocs-dev
+```
+
+---
+
+## VS Code conectado por SSH (Remote-SSH)
+
+1. Instala la extensión **Remote - SSH** (o el pack **Remote Development**)
+2. `Ctrl+Shift+P` o `Remote-SSH: Connect Current Window to Host...`
+3. Escribe **solo** `usuario@IP` (sin la palabra `ssh` delante — ese prefijo ya lo añade la extensión automáticamente)
+4. Elige la plataforma remota (Linux, en tu caso)
+5. **Archivo → Abrir carpeta** → navega hasta `/srv/docker/mkdocs`
+
+Definir un alias en `~/.ssh/config` (en Windows):
+```
+Host raspberry
+    HostName 192.168.1.65
+    User mpi
+```
+
+---
+
+## `mkdocs.yml` actual (tema Material)
+
+```yaml
+site_name: Bienvenidos a la wiki de MRT
+site_description: Tutoriales
+
+nav:
+  
+    - Indice: index.md
+    - Raspberry pi: raspberry.md
+    - Servicios: servicios.md
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/toggle-switch-off
+        name: Cambiar a modo claro
+  features:
+#    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - sane_lists
+
+extra_css:
+  - stylesheets/extra.css
+```
+
+
+### Para controlar el orden y nombres del menú lateral manualmente
+```yaml
+nav:
+    - Indice: index.md
+    - Raspberry pi: raspberry.md
+    - Servicios: servicios.md
+```
+
+---
+
+## Enlaces en markdown: un detalle importante
+
+```markdown
+[texto](https://www.google.com)   ← enlace externo, con protocolo completo (https://)
+[texto](otra-pagina.md)            ← enlace interno, ruta relativa dentro de docs/
+```
+Sin el `https://`, un enlace externo se interpreta como una ruta interna de tu propia wiki y da error 404.
+
+---
+
+## Páginas de referencia
+
+- **Guía de sintaxis Markdown (oficial, la más usada como referencia):**
+  https://www.markdownguide.org/
+
+- **Documentación de Material for MkDocs (temas, extensiones, ejemplos en vivo):**
+  https://squidfunk.github.io/mkdocs-material/
+
+- **Referencia de sintaxis específica que usa Material (admonitions, pestañas, tareas, etc.):**
+  https://squidfunk.github.io/mkdocs-material/reference/
+
+- **Lista de temas de terceros para MkDocs (wiki oficial del proyecto):**
+  https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
+
+- **Documentación oficial de MkDocs (comandos, configuración base):**
+  https://www.mkdocs.org/
+
+---
+
+## Aviso a tener en cuenta
+
+Material for MkDocs ha entrado en modo mantenimiento: el equipo se centra en un sucesor llamado **Zensical** (compatible con `mkdocs.yml`, aún en fase alfa). Se ha comprometido soporte de seguridad para Material for MkDocs hasta noviembre de 2026. Para un proyecto personal como este, no es motivo de urgencia, pero conviene tenerlo presente a medio plazo.
