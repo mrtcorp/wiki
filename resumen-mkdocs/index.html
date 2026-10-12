@@ -516,7 +516,7 @@
     └── index.md
 </code></pre></div>
 <blockquote>
-<p>Nota: el volumen del contenedor mapea <code>/srv/docker/mkdocs</code> → <code>/docs</code> (dentro del contenedor), y como MkDocs busca una subcarpeta llamada <code>docs/</code> para el contenido, aparece un "doble docs" (uno es el punto de montaje, otro es la carpeta que exige MkDocs). No es un error, es el patrón estándar.</p>
+<p>Nota: el volumen del contenedor mapea <code>/srv/docker/mkdocs</code> → <code>/docs</code> (dentro del contenedor), y como MkDocs busca una subcarpeta llamada <code>docs/</code> para el contenido, aparece un "doble docs" (uno es el punto de montaje, otro es la carpeta que exige MkDocs). Teoricamente no es un error, pero faltaria comprobar si el hecho de usar dockerfile (wordir /docs) puede influir.</p>
 </blockquote>
 <hr />
 <p>Propietario de la carpeta corregido para poder editar desde VS Code sin errores de permisos:
@@ -566,7 +566,7 @@ Asignamos el mismo mediante el cual se establezca la conexion ssh
 </tr>
 </tbody>
 </table>
-<p>** (poner en apartado docker) Por qué usar tu propio Dockerfile en vez de la imagen <code>squidfunk/mkdocs-material</code>:**
+<p><strong>Por qué usar tu propio Dockerfile en vez de la imagen <code>squidfunk/mkdocs-material</code>:</strong>
 - Control total sobre cuándo actualizar (no dependes de que un tercero publique una nueva imagen)
 - Base Debian (<code>slim</code>) en vez de Alpine → tienes <code>bash</code> disponible, más fácil de depurar
 - Mismo software final (MIT license), solo cambia quién construye la imagen</p>
