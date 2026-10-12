@@ -507,7 +507,7 @@
 
 
 <h1 id="mkdocs-contenedor">MkDocs (Contenedor)<a class="headerlink" href="#mkdocs-contenedor" title="Permanent link">&para;</a></h1>
-<p>MKDocs es un servicio mediante el cual podemos gestionar archivos .md (markdown) y generar el sitio estatico para servirlo via web</p>
+<p>MKDocs es un servicio mediante el cual podemos crear y editar archivos .md (markdown) y generar el sitio estatico para servirlo via web</p>
 <h2 id="estructura-de-carpetas">Estructura de carpetas<a class="headerlink" href="#estructura-de-carpetas" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>/srv/docker/mkdocs/
 ├── Dockerfile
@@ -516,10 +516,11 @@
     └── index.md
 </code></pre></div>
 <blockquote>
-<p>Nota: el volumen mapea <code>/srv/docker/mkdocs</code> → <code>/docs</code> (dentro del contenedor), y como MkDocs busca por convención una subcarpeta llamada <code>docs/</code> para el contenido, aparece un "doble docs" (uno es el punto de montaje, otro es la carpeta que exige MkDocs). No es un error, es el patrón estándar.</p>
+<p>Nota: el volumen del contenedor mapea <code>/srv/docker/mkdocs</code> → <code>/docs</code> (dentro del contenedor), y como MkDocs busca una subcarpeta llamada <code>docs/</code> para el contenido, aparece un "doble docs" (uno es el punto de montaje, otro es la carpeta que exige MkDocs). No es un error, es el patrón estándar.</p>
 </blockquote>
 <hr />
 <p>Propietario de la carpeta corregido para poder editar desde VS Code sin errores de permisos:
+Asignamos el mismo mediante el cual se establezca la conexion ssh
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>usuario:usuario<span class="w"> </span>/srv/docker/mkdocs
 </code></pre></div></p>
 <hr />
