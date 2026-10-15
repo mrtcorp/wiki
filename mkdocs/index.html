@@ -516,7 +516,7 @@
     └── index.md
 </code></pre></div>
 <blockquote>
-<p>Nota: el volumen del contenedor mapea <code>/srv/docker/mkdocs</code> → <code>/docs</code> (dentro del contenedor), y como MkDocs busca una subcarpeta llamada <code>docs/</code> para el contenido, aparece un "doble docs" (uno es el punto de montaje, otro es la carpeta que exige MkDocs). Teoricamente no es un error, pero faltaria comprobar si el hecho de usar dockerfile (wordir /docs) puede influir.</p>
+<p>Nota: el volumen del contenedor mapea <code>/srv/docker/mkdocs</code> : <code>/docs</code> (dentro del contenedor). MkDocs busca una subcarpeta llamada <code>docs/</code> para el contenido, por ese motivo aparece un "doble docs" (uno es el punto de montaje, otro es la carpeta que exige MkDocs). Teoricamente no es un error, pero faltaria comprobar si el hecho de usar dockerfile (wordir /docs) puede influir.</p>
 </blockquote>
 <hr />
 <p>Propietario de la carpeta corregido para poder editar desde VS Code sin errores de permisos:
