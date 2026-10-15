@@ -1,0 +1,730 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutoriales">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Publicar la wiki (MkDocs) en GitHub Pages con dominio propio - Bienvenidos a la wiki de MRT</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#publicar-la-wiki-mkdocs-en-github-pages-con-dominio-propio" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Bienvenidos a la wiki de MRT" class="md-header__button md-logo" aria-label="Bienvenidos a la wiki de MRT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bienvenidos a la wiki de MRT
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Publicar la wiki (MkDocs) en GitHub Pages con dominio propio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Bienvenidos a la wiki de MRT" class="md-nav__button md-logo" aria-label="Bienvenidos a la wiki de MRT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bienvenidos a la wiki de MRT
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../servicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-github-pages-y-que-limites-tiene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Qué es GitHub Pages y qué límites tiene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-crear-el-repositorio-y-activar-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Crear el repositorio y activar Pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-problema-cuenta-en-proceso-de-eliminacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Problema: cuenta en proceso de eliminación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-subir-el-sitio-desde-la-raspberry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Subir el sitio desde la Raspberry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dominio-propio-wikimrtdocom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dominio propio (wiki.mrtdo.com)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Dominio propio (wiki.mrtdo.com)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacion-del-dominio-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificación del dominio (opcional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-flujo-de-actualizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Flujo de actualización
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-que-el-push-no-pida-usuario-ni-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Que el push no pida usuario ni token
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-problemas-encontrados-y-soluciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Problemas encontrados y soluciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-avisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Avisos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="publicar-la-wiki-mkdocs-en-github-pages-con-dominio-propio">Publicar la wiki (MkDocs) en GitHub Pages con dominio propio<a class="headerlink" href="#publicar-la-wiki-mkdocs-en-github-pages-con-dominio-propio" title="Permanent link">&para;</a></h1>
+<p>Resumen del proceso para pasar la wiki, generada con MkDocs en la Raspberry Pi y servida antes desde un contenedor Apache, a <strong>GitHub Pages</strong>, accesible desde <code>wiki.mrtdo.com</code> con HTTPS.</p>
+<h2 id="1-que-es-github-pages-y-que-limites-tiene">1. Qué es GitHub Pages y qué límites tiene<a class="headerlink" href="#1-que-es-github-pages-y-que-limites-tiene" title="Permanent link">&para;</a></h2>
+<p>GitHub Pages sirve <strong>contenido estático</strong> (HTML, CSS, JS ya generados) desde un repositorio. No ejecuta código en servidor ni ofrece base de datos.</p>
+<ul>
+<li>Un sitio de usuario por cuenta (<code>usuario.github.io</code>) y <strong>un sitio de proyecto por repositorio</strong>, así que se pueden alojar tantos sitios como repos.</li>
+<li>El repositorio y el sitio publicado no deben superar 1 GB, y el despliegue falla si tarda más de 10 minutos.</li>
+<li>No es para tiendas online ni servicios comerciales (SaaS), ni para manejar contraseñas o datos de tarjetas.</li>
+<li>Con cuenta gratuita, el repo debe ser <strong>público</strong> para usar Pages.</li>
+<li>Si se necesita base de datos: backend propio en la Raspberry, o un servicio externo (Supabase, Firebase) consumido desde JS.</li>
+</ul>
+<h2 id="2-crear-el-repositorio-y-activar-pages">2. Crear el repositorio y activar Pages<a class="headerlink" href="#2-crear-el-repositorio-y-activar-pages" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Crear un repositorio público (aquí, <code>wiki</code>). Con un nombre distinto de <code>usuario.github.io</code> será un sitio de proyecto, con URL <code>https://usuario.github.io/wiki/</code>.</li>
+<li>En el repo: <strong>Settings → Pages</strong> (solo disponible en la web, no en la app de Android). Directo: <code>github.com/&lt;usuario&gt;/wiki/settings/pages</code>.</li>
+<li>Configurar:<ul>
+<li><strong>Source:</strong> <em>Deploy from a branch</em>.</li>
+<li><strong>Branch:</strong> <code>main</code>, carpeta <code>/ (root)</code>. Guardar con <strong>Save</strong>.</li>
+</ul>
+</li>
+</ol>
+<p>Opciones de la pantalla:</p>
+<ul>
+<li><strong>Deploy from a branch:</strong> publica tal cual lo que haya en una rama y carpeta. Es la más simple.</li>
+<li><strong>GitHub Actions:</strong> compila el sitio en cada push mediante un workflow. Es gratis en repositorios públicos con los runners estándar.</li>
+<li><strong>Visibility:</strong> publicar de forma privada es una función de GitHub Enterprise. No hace falta.</li>
+<li><strong><code>/ (root)</code> o <code>/docs</code>:</strong> carpeta del repo desde la que se publica. Con <code>/ (root)</code>, el <code>index.html</code> debe estar suelto en el primer nivel.</li>
+</ul>
+<p>Importante: se sube la carpeta <strong><code>site/</code></strong> (HTML ya generado), nunca <code>docs/</code> (el Markdown de origen).</p>
+<h2 id="21-problema-cuenta-en-proceso-de-eliminacion">2.1. Problema: cuenta en proceso de eliminación<a class="headerlink" href="#21-problema-cuenta-en-proceso-de-eliminacion" title="Permanent link">&para;</a></h2>
+<p>Si al crear el repo sale <em>"Owner is being deleted, so new repository cannot be created"</em>, la cuenta tiene una eliminación pendiente. Hay que cancelarla durante el plazo de gracia (desde la web, en <code>github.com/settings/admin</code> o con el enlace del email de GitHub), o crear una cuenta nueva.</p>
+<h2 id="3-subir-el-sitio-desde-la-raspberry">3. Subir el sitio desde la Raspberry<a class="headerlink" href="#3-subir-el-sitio-desde-la-raspberry" title="Permanent link">&para;</a></h2>
+<p>Comprobar que git está instalado (en este caso, 2.39.5):</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>--version
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w">   </span><span class="c1"># solo si no está</span>
+</code></pre></div>
+<p>Clonar el repo en la carpeta personal, <strong>sin <code>sudo</code></strong> y <strong>fuera de la carpeta del sitio</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mrtcorp/wiki.git
+</code></pre></div>
+<p>Copiar el contenido de <code>site/</code> dentro del repo y crear <code>.nojekyll</code>:</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>-r<span class="w"> </span>/srv/docker/web/html/site/.<span class="w"> </span>~/wiki/
+touch<span class="w"> </span>~/wiki/.nojekyll
+</code></pre></div>
+<p>Configurar identidad y subir (desde dentro de <code>~/wiki</code>):</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"mrtcorp"</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"&lt;email o email noreply de GitHub&gt;"</span>
+<span class="nb">cd</span><span class="w"> </span>~/wiki
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Primera versión de la wiki"</span>
+git<span class="w"> </span>push
+</code></pre></div>
+<p>GitHub <strong>no acepta la contraseña de la cuenta</strong> para git. Hay que usar un <strong>Personal Access Token</strong>:</p>
+<ol>
+<li>GitHub → foto → <strong>Settings → Developer settings → Personal access tokens → Tokens (classic)</strong>.</li>
+<li>Generar uno con el permiso <code>repo</code> y una caducidad razonable.</li>
+<li>Copiarlo al momento (empieza por <code>ghp_</code> y no se vuelve a mostrar).</li>
+<li>En el <code>push</code>, usuario = nombre de la cuenta, contraseña = el token. La terminal no muestra nada al pegar; es normal. En Windows Terminal se pega con <code>Ctrl+Shift+V</code>.</li>
+</ol>
+<p>Si el repo es público, cualquiera puede leer la wiki: antes de subir hay que revisar que no contenga contraseñas, tokens ni datos privados.</p>
+<h2 id="4-dominio-propio-wikimrtdocom">4. Dominio propio (<code>wiki.mrtdo.com</code>)<a class="headerlink" href="#4-dominio-propio-wikimrtdocom" title="Permanent link">&para;</a></h2>
+<p>Hay tres piezas: el archivo <code>CNAME</code> del repo, el DNS y los ajustes de Pages.</p>
+<p><strong>1. Archivo <code>CNAME</code> en el repo.</strong> Indica a GitHub qué dominio debe servir. Solo contiene el dominio, sin <code>https://</code> ni barra final:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/wiki
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"wiki.mrtdo.com"</span><span class="w"> </span>&gt;<span class="w"> </span>CNAME
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Dominio personalizado"</span>
+git<span class="w"> </span>push
+</code></pre></div>
+<p><strong>2. DNS en OVH</strong> (Zona DNS de <code>mrtdo.com</code>):</p>
+<ul>
+<li>Borrar cualquier registro <code>A</code>, <code>AAAA</code> o <code>CNAME</code> anterior de <code>wiki</code> (no pueden convivir).</li>
+<li>Crear un registro <strong>CNAME</strong>: subdominio <code>wiki</code>, destino <code>mrtcorp.github.io.</code> (con el punto final).</li>
+</ul>
+<p><strong>3. Ajustes de Pages:</strong> en <strong>Custom domain</strong> debe aparecer <code>wiki.mrtdo.com</code> (el <code>CNAME</code> lo rellena solo) con el aviso <em>DNS check successful</em>. Después, marcar <strong>Enforce HTTPS</strong>.</p>
+<p>Comprobaciones de DNS en CMD de Windows:</p>
+<div class="highlight"><pre><span></span><code>nslookup -type=CNAME wiki.mrtdo.com
+nslookup -type=TXT _github-pages-challenge-mrtcorp.mrtdo.com
+</code></pre></div>
+<p>En la Raspberry, <code>dig</code> requiere <code>sudo apt install dnsutils</code>. También sirve dnschecker.org.</p>
+<p><strong>HTTPS:</strong> justo después de configurar el dominio, la casilla <em>Enforce HTTPS</em> aparece deshabilitada porque el certificado aún no se ha emitido. Mientras tanto la web carga por HTTP y el navegador (Brave) muestra una X roja. Es cuestión de esperar, entre minutos y un par de horas. Si pasan más de 24 h: <strong>Remove</strong> del dominio, esperar un minuto y volver a guardarlo, comprobando después que el <code>CNAME</code> sigue en el repo.</p>
+<p>El archivo <code>CNAME</code> lo crea GitHub si el dominio se escribe desde Settings, pero conviene tenerlo en la copia local para que no se pierda en futuras subidas. Si se quiere que salga siempre del build, se puede crear <code>docs/CNAME</code> en el proyecto de MkDocs (MkDocs copia a <code>site/</code> los archivos que no son Markdown; el <code>.nojekyll</code>, al empezar por punto, no).</p>
+<h3 id="verificacion-del-dominio-opcional">Verificación del dominio (opcional)<a class="headerlink" href="#verificacion-del-dominio-opcional" title="Permanent link">&para;</a></h3>
+<p>En <strong>Settings (de la cuenta) → Pages → Add a domain</strong>, con <code>mrtdo.com</code>. Evita que otra cuenta de GitHub reclame un subdominio si algún día se deja de usar. Se verifica con un registro <strong>TXT</strong> en OVH (subdominio <code>_github-pages-challenge-&lt;usuario&gt;</code>, valor el código que da GitHub). Si no se verifica, basta con borrar el CNAME de OVH cuando se deje de usar Pages.</p>
+<h2 id="5-flujo-de-actualizacion">5. Flujo de actualización<a class="headerlink" href="#5-flujo-de-actualizacion" title="Permanent link">&para;</a></h2>
+<p>Antes, el flujo era:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>mkdocs<span class="w"> </span>mkdocs<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>rsync<span class="w"> </span>-a<span class="w"> </span>--delete<span class="w"> </span>/srv/docker/mkdocs/site/<span class="w"> </span>/srv/docker/web/html/site/
+</code></pre></div>
+<p>Ahora se añade un segundo <code>rsync</code> hacia el repo y el push. Se define como <strong>función</strong> en <code>~/.bashrc</code> (no como alias, por las comillas y el <code>$(date)</code>):</p>
+<div class="highlight"><pre><span></span><code>site<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>mkdocs<span class="w"> </span>mkdocs<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sudo<span class="w"> </span>rsync<span class="w"> </span>-a<span class="w"> </span>--delete<span class="w"> </span>/srv/docker/mkdocs/site/<span class="w"> </span>/srv/docker/web/html/site/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>rsync<span class="w"> </span>-a<span class="w"> </span>--delete<span class="w"> </span>--exclude<span class="o">=</span><span class="s1">'.git'</span><span class="w"> </span>--exclude<span class="o">=</span><span class="s1">'CNAME'</span><span class="w"> </span>--exclude<span class="o">=</span><span class="s1">'.nojekyll'</span><span class="w"> </span>/srv/docker/mkdocs/site/<span class="w"> </span>/home/mpi/wiki/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>git<span class="w"> </span>-C<span class="w"> </span>/home/mpi/wiki<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">{</span><span class="w"> </span>git<span class="w"> </span>-C<span class="w"> </span>/home/mpi/wiki<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Actualización </span><span class="k">$(</span>date<span class="w"> </span><span class="s1">'+%F %H:%M'</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>git<span class="w"> </span>-C<span class="w"> </span>/home/mpi/wiki<span class="w"> </span>push
+<span class="o">}</span>
+</code></pre></div>
+<p>Conceptos clave:</p>
+<ul>
+<li><strong><code>rsync --delete</code></strong> borra del <strong>destino</strong> lo que ya no existe en el origen. El origen nunca se toca. La carpeta destino permanece; solo cambia su contenido.</li>
+<li><strong><code>--exclude</code></strong> protege del borrado <code>.git</code>, <code>CNAME</code> y <code>.nojekyll</code>.</li>
+<li><strong>Orden y barra final:</strong> origen primero, destino después; <code>site/</code> con barra copia el contenido, sin barra crearía una carpeta anidada. Para probar sin cambiar nada, añadir <code>--dry-run</code> (las líneas <code>deleting</code> son lo que se borraría).</li>
+<li><strong><code>cp -r origen/. destino/</code></strong> solo añade y sobrescribe; no borra, así que no elimina el <code>CNAME</code>. <code>mkdocs build</code> solo limpia <code>site/</code>, no <code>~/wiki</code>.</li>
+<li><strong><code>git add .</code></strong> prepara los cambios (nuevos, modificados y borrados, en git moderno) para el commit; <code>git add -A</code> hace lo mismo desde cualquier carpeta. <code>git -C &lt;ruta&gt;</code> ejecuta git en esa carpeta sin cambiar de directorio.</li>
+<li><strong><code>|| true</code></strong> evita que la cadena se corte cuando no hay nada que confirmar.</li>
+<li><strong><code>&amp;&amp;</code></strong> encadena pasos: si uno falla, los siguientes no se ejecutan, de modo que no se sube una versión a medias.</li>
+<li><strong><code>.git</code></strong> es una carpeta oculta con el historial, las ramas y la configuración del repo (incluido el remoto). Si se borra, <code>~/wiki</code> deja de ser un repositorio.</li>
+<li><strong><code>.nojekyll</code></strong> evita que GitHub procese el sitio con Jekyll, que ignora archivos y carpetas que empiezan por guion bajo.</li>
+</ul>
+<p>Si existía un <code>alias site=...</code>, hay que comentarlo y ejecutar <code>unalias site</code> antes de <code>source ~/.bashrc</code>; si no, bash sustituye el alias dentro de <code>site() {</code> y da un error de sintaxis.</p>
+<h2 id="6-que-el-push-no-pida-usuario-ni-token">6. Que el push no pida usuario ni token<a class="headerlink" href="#6-que-el-push-no-pida-usuario-ni-token" title="Permanent link">&para;</a></h2>
+<p><strong>Opción recomendada: clave SSH como <em>deploy key</em></strong> (da acceso solo a ese repo):</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">"raspberry-wiki"</span><span class="w"> </span>-f<span class="w"> </span>~/.ssh/id_wiki
+cat<span class="w"> </span>~/.ssh/id_wiki.pub
+</code></pre></div>
+<ol>
+<li>En el repo: <strong>Settings → Deploy keys → Add deploy key</strong>, pegar la clave pública y marcar <em>Allow write access</em>.</li>
+<li>
+<p>En <code>~/.ssh/config</code>:</p>
+<div class="highlight"><pre><span></span><code>Host github-wiki
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_wiki
+  IdentitiesOnly yes
+</code></pre></div>
+</li>
+<li>
+<p>Cambiar el remoto y probar:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>-C<span class="w"> </span>~/wiki<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>git@github-wiki:mrtcorp/wiki.git
+git<span class="w"> </span>-C<span class="w"> </span>~/wiki<span class="w"> </span>push
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Alternativa rápida:</strong> <code>git config --global credential.helper store</code>. Guarda el token en texto plano en <code>~/.git-credentials</code>, con acceso a toda la cuenta, y caduca.</p>
+<h2 id="7-problemas-encontrados-y-soluciones">7. Problemas encontrados y soluciones<a class="headerlink" href="#7-problemas-encontrados-y-soluciones" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Owner is being deleted...</code> al crear el repo</td>
+<td>Cuenta con eliminación pendiente</td>
+<td>Cancelar la eliminación o usar otra cuenta</td>
+</tr>
+<tr>
+<td><code>Permission denied</code> al clonar dentro de <code>site/</code></td>
+<td>Carpeta propiedad de root</td>
+<td>Clonar en <code>~</code> sin <code>sudo</code></td>
+</tr>
+<tr>
+<td><code>fatal: not a git repository</code></td>
+<td>Comando ejecutado fuera de <code>~/wiki</code></td>
+<td><code>cd ~/wiki</code> o usar <code>git -C ~/wiki</code></td>
+</tr>
+<tr>
+<td><code>Password authentication is not supported</code></td>
+<td>GitHub no admite contraseña de cuenta</td>
+<td>Usar un Personal Access Token</td>
+</tr>
+<tr>
+<td><code>syntax error near unexpected token '('</code> en <code>site() {</code></td>
+<td>Alias <code>site</code> antiguo aún cargado</td>
+<td><code>unalias site</code> y <code>source ~/.bashrc</code></td>
+</tr>
+<tr>
+<td><em>Enforce HTTPS</em> deshabilitado</td>
+<td>Certificado aún no emitido</td>
+<td>Esperar; reintentar el dominio si pasan 24 h</td>
+</tr>
+<tr>
+<td>X roja en el navegador</td>
+<td>Carga por HTTP antes de activar HTTPS</td>
+<td>Esperar al certificado</td>
+</tr>
+<tr>
+<td>Los cambios no se ven</td>
+<td>Retardo de publicación y caché (1-2 min o más)</td>
+<td>Mirar la pestaña <strong>Actions</strong> del repo y recargar con <code>Ctrl+F5</code></td>
+</tr>
+<tr>
+<td>Lista de Markdown sin formato</td>
+<td>Falta línea en blanco antes de la lista</td>
+<td>Dejar una línea vacía entre el párrafo y la lista</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-avisos">8. Avisos<a class="headerlink" href="#8-avisos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>El aviso de <strong>Material for MkDocs sobre MkDocs 2.0</strong> (plugins y temas dejarán de funcionar) es informativo. Conviene fijar la versión de la imagen de Docker para no actualizar a ciegas.</li>
+<li>Una página que no está en <code>nav</code> se publica igualmente, pero no aparece en el menú.</li>
+<li>El repo es público: no subir secretos. Guardar el token y la clave privada (<code>~/.ssh/id_wiki</code>) con cuidado, y si se exponen, revocarlos en GitHub.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
