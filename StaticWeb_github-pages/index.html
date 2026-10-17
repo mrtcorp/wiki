@@ -21,7 +21,7 @@
     
     
       
-        <title>Publicar la wiki (MkDocs) en GitHub Pages con dominio propio - Bienvenidos a la wiki de MRT</title>
+        <title>Publicar web estatica en GitHub Pages con dominio propio - Bienvenidos a la wiki de MRT</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#publicar-la-wiki-mkdocs-en-github-pages-con-dominio-propio" class="md-skip">
+        <a href="#publicar-web-estatica-en-github-pages-con-dominio-propio" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Publicar la wiki (MkDocs) en GitHub Pages con dominio propio
+              Publicar web estatica en GitHub Pages con dominio propio
             
           </span>
         </div>
@@ -467,16 +467,15 @@
 
 
 
-<h1 id="publicar-la-wiki-mkdocs-en-github-pages-con-dominio-propio">Publicar la wiki (MkDocs) en GitHub Pages con dominio propio<a class="headerlink" href="#publicar-la-wiki-mkdocs-en-github-pages-con-dominio-propio" title="Permanent link">&para;</a></h1>
-<p>Resumen del proceso para pasar la wiki, generada con MkDocs en la Raspberry Pi y servida antes desde un contenedor Apache, a <strong>GitHub Pages</strong>, accesible desde <code>wiki.mrtdo.com</code> con HTTPS.</p>
+<h1 id="publicar-web-estatica-en-github-pages-con-dominio-propio">Publicar web estatica en GitHub Pages con dominio propio<a class="headerlink" href="#publicar-web-estatica-en-github-pages-con-dominio-propio" title="Permanent link">&para;</a></h1>
+<p>Resumen del proceso para alojar una web, en <strong>GitHub Pages</strong> mediante git terminal, accesible desde <code>tu.dominio.com</code> con HTTPS.</p>
 <h2 id="1-que-es-github-pages-y-que-limites-tiene">1. Qué es GitHub Pages y qué límites tiene<a class="headerlink" href="#1-que-es-github-pages-y-que-limites-tiene" title="Permanent link">&para;</a></h2>
-<p>GitHub Pages sirve <strong>contenido estático</strong> (HTML, CSS, JS ya generados) desde un repositorio. No ejecuta código en servidor ni ofrece base de datos.</p>
+<p>GitHub Pages sirve <strong>contenido estático</strong> (HTML, CSS, JS ya generados) desde un repositorio. No ejecuta código (php...) en servidor ni ofrece base de datos.</p>
 <ul>
-<li>Un sitio de usuario por cuenta (<code>usuario.github.io</code>) y <strong>un sitio de proyecto por repositorio</strong>, así que se pueden alojar tantos sitios como repos.</li>
+<li>Un sitio de usuario por cuenta (<code>usuario.github.io</code>) y <strong>un sitio de proyecto por repositorio</strong>, así que se pueden alojar tantos sitios como repos. Creando un archivo CNAME que contenga el subdominio (un CNAME para cada web de cada repo), puedes crear diversos registros CNAME en tu servidor de dominio (ovh en mi caso). Seria como tener un proxy inverso</li>
 <li>El repositorio y el sitio publicado no deben superar 1 GB, y el despliegue falla si tarda más de 10 minutos.</li>
-<li>No es para tiendas online ni servicios comerciales (SaaS), ni para manejar contraseñas o datos de tarjetas.</li>
-<li>Con cuenta gratuita, el repo debe ser <strong>público</strong> para usar Pages.</li>
-<li>Si se necesita base de datos: backend propio en la Raspberry, o un servicio externo (Supabase, Firebase) consumido desde JS.</li>
+<li>No se permiten tiendas online ni servicios comerciales (SaaS), ni para manejar contraseñas o datos de tarjetas.</li>
+<li>Con cuenta gratuita, el repo debe ser <strong>público</strong> para poder usar Pages.</li>
 </ul>
 <h2 id="2-crear-el-repositorio-y-activar-pages">2. Crear el repositorio y activar Pages<a class="headerlink" href="#2-crear-el-repositorio-y-activar-pages" title="Permanent link">&para;</a></h2>
 <ol>

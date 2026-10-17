@@ -507,9 +507,9 @@
 
 
 <h1 id="mkdocs-contenedor">MkDocs (Contenedor)<a class="headerlink" href="#mkdocs-contenedor" title="Permanent link">&para;</a></h1>
-<p>MKDocs es un servicio mediante el cual podemos crear y editar archivos .md (markdown) y también generar el sitio estatico para servirlo via web. Squidfunk/mkdocs-materials es una imagen muy utilizada (muchas descargas en dockerhub.com), pero yo me decanto por contruir mi propia imagen a partir de una imagen de python con Dockerfile. Las ventajas e inconvenientes que me llevan a tomar esta decision las explico en el apartado dedicado a <a href="Docker.md">Docker</a>.</p>
+<p>MKDocs es un servicio mediante el cual podemos crear y editar archivos .md (markdown) y también generar el sitio estatico para servirlo via web. Squidfunk/mkdocs-materials es una imagen muy utilizada (muchas descargas en dockerhub.com), pero yo me decanto por contruir mi propia imagen a partir de una imagen de python con Dockerfile. Las ventajas e inconvenientes que me llevan a tomar esta decision las explico en el apartado dedicado a <a href="../Docker/">Docker</a>.</p>
 <h2 id="estructura-de-carpetas">Estructura de carpetas<a class="headerlink" href="#estructura-de-carpetas" title="Permanent link">&para;</a></h2>
-<p>Definimos la carpeta srv/docker/mkdocs la cual mapearemos a la carpeta /docs interna del contenedor con docker compose. Dentro de mkdocs definimos el archivo Dockerfile el cual le dara forma a nuestra imagen.</p>
+<p>Definimos la carpeta srv/docker/mkdocs la cual mapearemos a la carpeta /docs interna del contenedor con docker compose. Dentro de mkdocs definimos el archivo Dockerfile el cual le dara forma a nuestra imagen. En el archivo mkdocs.yml se define el tema que se mostrará, plugins, archivos css. En docs se ubican los archivos .md y carpeta de imagenes</p>
 <div class="highlight"><pre><span></span><code>/srv/docker/mkdocs/
 ├── Dockerfile
 ├── mkdocs.yml
